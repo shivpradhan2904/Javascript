@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api request</title>
+  </head>
+  <body style="background-color: black">
+    <div style="color: white">
+      <img id="image" src=""></img>
+      <button id="btn">click me</button>
+    </div>
+  </body>
+  <script>
+    const imgElement = document.getElementById("image");
+    const button = document.getElementById("btn");
+    let data
+    const requesturl = "https://jsonplaceholder.typicode.com/photos";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", requesturl); //open doesn't calls automatically
+    //   if (xhr.readyState === 4) {
+    //     // in this case if i want to get my followers so
+    //     // const data = this.responseText
+    //     // console.log(data.followers)// if we do this then it shows undefined because it holds data as string
+    //     const data = JSON.parse(this.responseText); //for that purpose we have to do it as a json
+    //     console.log(data); // if we do this then it shows undefined because it holds data as string
+    //   }
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            data = JSON.parse(this.responseText); // Parse the response JSON
+            console.log(data); // Log the array of photos
+        }
+    };
+    xhr.send(); //to call the api
+    button.addEventListener("click", () => {
+        if (data && data.length > 0) { // Check if data is available
+            imgElement.src = data[0].url; // Set the img src to the URL of the first image
+            imgElement.style.display = 'block'; // Show the image
+        } else {
+            console.error("No data available"); // Log an error if data is not present
+        }
+    });
+  </script>
+</html>

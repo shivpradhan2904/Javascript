@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Handling</title>
+</head>
+<body>
+    <form onsubmit="datahandle()" action="">
+        userId: <input type="email" id="1"><br>
+        Password: <input type="password" id="2"><br>
+        confirm password: <input type="password" id="3"><br>
+        <button>submit</button>
+    </form>
+</body>
+<script>
+    function datahandle(){
+        let userId=document.getElementById("1").textContent;
+        let password=document.getElementById("2").textContent;
+        let confirm=document.getElementById("3").value;
+        if (userId=="" || password=="" ||confirm=="") {
+            alert("all fields are mendatory")
+            return false
+        }else{
+            return true
+        }
+
+    }
+</script>
+</html>
