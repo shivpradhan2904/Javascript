@@ -15,6 +15,7 @@ let arr = ["shiv", "ram", "laxman", "pradeep","hari"];
 // slice or splice
 console.log(arr.slice(0,2))
 console.log("A",arr)//slice didn't change the array and it didn't include the end index like in this case is 0 to 2 it didn't includes 2
+console.log("abc")
 
 console.log(arr.splice(1,3))//in case of this it cut the array and chnages the array and it includes the last part like in this case 3
 console.log("B",arr)
